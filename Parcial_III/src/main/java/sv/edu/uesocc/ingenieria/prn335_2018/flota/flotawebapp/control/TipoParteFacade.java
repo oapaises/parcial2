@@ -8,14 +8,14 @@ package sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.TipoVehiculo;
+import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.TipoParte;
 
 /**
  *
  * @author christian
  */
 @Stateless
-public class TipoVehiculoFacade extends AbstractFacade<TipoVehiculo> {
+public class TipoParteFacade extends AbstractFacade<TipoParte> {
 
     @PersistenceContext(unitName = "flota_unit")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class TipoVehiculoFacade extends AbstractFacade<TipoVehiculo> {
         return em;
     }
 
-    public TipoVehiculoFacade() {
-        super(TipoVehiculo.class);
+    public TipoParteFacade() {
+        super(TipoParte.class);
     }
     
 }

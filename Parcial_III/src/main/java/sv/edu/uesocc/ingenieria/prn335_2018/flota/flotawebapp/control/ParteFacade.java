@@ -15,7 +15,7 @@ import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.Parte;
  * @author christian
  */
 @Stateless
-public class ParteFacade extends AbstractFacade<Parte> implements ParteFacadeLocal {
+public class ParteFacade extends AbstractFacade<Parte> {
 
     @PersistenceContext(unitName = "flota_unit")
     private EntityManager em;

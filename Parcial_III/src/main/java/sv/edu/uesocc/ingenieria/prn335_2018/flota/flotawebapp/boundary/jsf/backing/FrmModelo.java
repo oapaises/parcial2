@@ -24,7 +24,7 @@ import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.TipoVehicu
 
 /**
  * BackingBean para el formulario de mantenimiento de Modelo y ParteModelo
- * @author jcpenyahttps://github.com/oapaises/parcial
+ * @author jcpenya
  */
 @Named
 @ViewScoped

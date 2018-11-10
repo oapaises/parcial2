@@ -15,7 +15,7 @@ import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.Modelo;
  * @author christian
  */
 @Stateless
-public class ModeloFacade extends AbstractFacade<Modelo> implements ModeloFacadeLocal {
+public class ModeloFacade extends AbstractFacade<Modelo> {
 
     @PersistenceContext(unitName = "flota_unit")
     private EntityManager em;

@@ -15,7 +15,7 @@ import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.Marca;
  * @author christian
  */
 @Stateless
-public class MarcaFacade extends AbstractFacade<Marca> implements MarcaFacadeLocal {
+public class MarcaFacade extends AbstractFacade<Marca> {
 
     @PersistenceContext(unitName = "flota_unit")
     private EntityManager em;

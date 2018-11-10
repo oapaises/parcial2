@@ -18,7 +18,7 @@ import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.AbstractFa
 
 /**
  *
- * @author oapaises
+ * @author christian
  */
 public abstract class AbstractFrmDataModel<T> {
 
@@ -94,6 +94,7 @@ public abstract class AbstractFrmDataModel<T> {
         } catch (Exception e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
         }
+        return null;
     }
 
 
