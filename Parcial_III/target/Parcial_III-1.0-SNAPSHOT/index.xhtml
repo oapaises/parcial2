@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <p:panel style="margin-top: 0px;margin-bottom: 5px;">
+
+        </p:panel>
+
+        <p:scrollPanel style="margin-left: 0px;margin-right: 0px;margin-bottom: 5px" >
+            <p:panel style="margin-top: 5px;margin-bottom: 5px">
+            <h:form id="TablaModelo" >
+                
+                <p:outputLabel value="MODELO" style="background-position: center"/>
+                
+                <p:dataTable lazy="true" value="#{frmModelo.modelo}" paginator="true" rows="5" selectionMode="single" var="tabla" >
+                    <f:facet name="header">
+                        MODELO
+                    </f:facet>
+                    <p:column headerText="ID">
+                        <h:outputText value="#{tabla.idModelo}"/>
+                    </p:column>
+                    <p:column headerText="MARCA">
+                        <h:outputText value="#{tabla.idMarca.nombre}"/>
+                    </p:column>
+                    <p:column headerText="TIPO">
+                        <h:outputText value="#{tabla.idTipoVehiculo.nombre}"/>
+                    </p:column>
+                    <p:column headerText="NOMBRE">
+                        <h:outputText value="#{tabla.nombre}"/>
+                    </p:column>
+                    <p:column headerText="AÑO">
+                        <h:outputText value="#{tabla.anio}"/>
+                    </p:column>
+                    <p:ajax event="rowSelect" listener="#{frmModelo.set}"/>
+                </p:dataTable>
+            
+            <p:commandButton value="Nuevo"  />
+            <p:commandButton value="Cancelar"/>
+
+            
+                <p:tabView>
+                    <p:tab title="GENERALIDADES">
+                        <h:panelGrid columns="2" cellpadding="3" cellspacing="2">
+                            <p:outputLabel value="Id"/>
+                            <p:inputText value="" disabled="true"/>
+                            <p:outputLabel value="Tipo de Vehiculo"/>
+                            <p:selectOneMenu id="TPvehiculo" value="" style="width: 130px"/>
+                            <p:outputLabel value="Marca"/>
+                            <p:selectOneMenu id="MarcaM" value="" style="width: 130px"/>
+                            <p:outputLabel value="Nombre"/>
+                            <p:inputText value="" size="100"/>
+                            <p:outputLabel value="Año"/>
+                            <p:inputText value=""/>
+                        </h:panelGrid>
+
+                    </p:tab>
+                    <p:tab title="PARTES" id="partes">  
+
+                        <h:outputText value="PARTES PARA EL MODELO " />
+
+                        
+                            <p:dataTable lazy="true" value="#{frmModelo.frmModeloParte.modelo}" paginator="true" rows="5" selectionMode="single" var="tabla2">
+                                <f:facet name="header">
+                                    PARTES PARA EL MODELO
+                                </f:facet>
+                                <p:column headerText="PARTE">
+                                    <h:outputText value="#{tabla2.idParte.nombre}"/>
+                                </p:column>
+                                <p:column headerText="ESTADO">
+                                    <h:outputText value="#{tabla2.idParte.activo}"/>
+                                </p:column>
+
+                            </p:dataTable>
+
+
+                        
+                        <p:commandButton value="Nuevo"  />
+                        <p:commandButton value="Cancelar"/>
+                        
+                        
+                            <h:panelGrid columns="2" cellpadding="2" cellspacing="3">
+                                <p:outputLabel value="Parte: "/>
+                                <p:commandButton value="SELECCIONAR PARTE" onclick="PF('SeleccionDeParte').show();"/>
+                                <p:outputLabel value="Activo:"/>
+                                <p:selectBooleanCheckbox value="" required="true"/>
+                            </h:panelGrid>
+                            <p:commandButton value="GUARDAR"/>
+                        
+                        <p:dialog header="Seleccione una parte" widgetVar="SeleccionDeParte" closable="false" showEffect="explode">
+                            
+                            
+                            <p:commandButton value="Cancelar" onclick="PF('SeleccionDeParte').hide()"/>
+                        </p:dialog>
+                    </p:tab>
+                </p:tabView>
+            </h:form>
+            </p:panel>
+        </p:scrollPanel>
+        <p:panel>
+            <h:outputText value="TODOS LOS DERECHOS RESERVADOS" />
+        </p:panel>
+    </h:body>
+</html>
