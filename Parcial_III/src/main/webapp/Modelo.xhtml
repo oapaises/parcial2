@@ -29,7 +29,7 @@
                         <h:outputText value="#{tabla.idMarca.nombre}"/>
                     </p:column>
                     <p:column headerText="TIPO">
-                        <h:outputText value="#{tabla.idTipoVehiculo.nombre}"/>
+                        <h:outputText value="#{tabla.modeloParteList}"/>
                     </p:column>
                     <p:column headerText="NOMBRE">
                         <h:outputText value="#{tabla.nombre}"/>
@@ -59,21 +59,20 @@
                         </h:panelGrid>
 
                     </p:tab>
-                     
+                    <p:tab title="PARTES">  
 
                         <h:outputText value="PARTES PARA EL MODELO " />
 
                         <h:form id="TablaPartes" >
-                            <p:tab title="PARTES" id="partes"> 
-                            <p:dataTable lazy="true" value="#{frmModelo.frmModeloParte.modelo}" paginator="true" rows="5" selectionMode="single" var="tabla2">
+                            <p:dataTable lazy="true" value="#{frmModelo.frmModeloParte}" paginator="true" rows="5" selectionMode="single" var="tabla2" >
                                 <f:facet name="header">
                                     PARTES PARA EL MODELO
                                 </f:facet>
                                 <p:column headerText="PARTE">
-                                    <h:outputText value="#{tabla2.idParte.nombre}"/>
+                                    <h:outputText value=""/>
                                 </p:column>
                                 <p:column headerText="ESTADO">
-                                    <h:outputText value="#{tabla2.idParte.activo}"/>
+                                    <h:outputText value=""/>
                                 </p:column>
 
                             </p:dataTable>

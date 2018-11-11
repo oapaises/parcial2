@@ -2,11 +2,16 @@ sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/AbstractFacade.cl
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/boundary/jsf/backing/FrmModeloParte.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/boundary/jsf/AbstractFrmDataModel.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/boundary/jsf/AbstractFrmDataModel$1.class
-sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ParteFacade.class
+sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ModeloParteFacadeLocal.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/SubTipoParteFacade.class
+sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ParteFacade.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ModeloFacade.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/boundary/jsf/backing/FrmModelo.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/TipoVehiculoFacade.class
+sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ParteFacadeLocal.class
+sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ModeloFacadeLocal.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/MarcaFacade.class
+sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/TipoVehiculoFacadeLocal.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ModeloParteFacade.class
 sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/TipoParteFacade.class
+sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/MarcaFacadeLocal.class
