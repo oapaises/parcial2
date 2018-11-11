@@ -49,7 +49,7 @@ public abstract class AbstractFrmDataModel<T> {
     }
 
     public void resetRegistro(){
-        setRegistro(null);
+        this.setRegistro(null);
     }
 
     public void btnEliminarHandler(ActionEvent ae) {
