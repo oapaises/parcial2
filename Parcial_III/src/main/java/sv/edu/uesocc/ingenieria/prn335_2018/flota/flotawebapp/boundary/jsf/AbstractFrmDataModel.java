@@ -22,15 +22,16 @@ import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.AbstractFa
  */
 public abstract class AbstractFrmDataModel<T> {
 
-    public T registro;
+    protected T registro;
 
     public abstract Object clavePorDatos(T object);
 
     public abstract T datosPorClave(String rowKey);
 
-    public abstract AbstractFacade<T> getFacade();
+    protected abstract AbstractFacade<T> getFacade();
     List<T> List = new ArrayList<>();
-    public LazyDataModel<T> modelo;
+    protected LazyDataModel<T> modelo;
+    public abstract void crearNuevo();
 
     public void llenarLista(List<T> Lista) {
         if (getFacade().findAll() != null) {
@@ -39,15 +40,16 @@ public abstract class AbstractFrmDataModel<T> {
             Lista = Collections.EMPTY_LIST;
         }
     }
+    
+    public void inicializar() {
+//        this.modelo();
+        this.llenarLista(List);
+        this.Fodelo();
+        this.resetRegistro();
+    }
 
-    public void crearNuevo() {
-        if (getFacade() != null && registro != null) {
-            try {
-                getFacade().create(registro);
-            } catch (Exception e) {
-                Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
-            }
-        }
+    public void resetRegistro(){
+        setRegistro(null);
     }
 
     public void btnEliminarHandler(ActionEvent ae) {
@@ -61,7 +63,7 @@ public abstract class AbstractFrmDataModel<T> {
     }
 
     public void btnCancelarHandler(ActionEvent ae) {
-
+        resetRegistro();
     }
 
     public LazyDataModel<T> Fodelo() {
@@ -119,10 +121,7 @@ public abstract class AbstractFrmDataModel<T> {
 //
 //    }
 //
-    public void inicializar() {
-//        this.modelo();
-        this.llenarLista(List);
-    }
+    
 
     public T getRegistro() {
         return registro;

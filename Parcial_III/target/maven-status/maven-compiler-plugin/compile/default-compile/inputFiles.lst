@@ -1,4 +1,11 @@
-/home/christian/NetBeansProjects/09/guia09/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/datos/acceso/TipoEstadoReservaFacadeLocal.java
-/home/christian/NetBeansProjects/09/guia09/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/datos/acceso/AbstractFacade.java
-/home/christian/NetBeansProjects/09/guia09/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/datos/acceso/TipoEstadoReservaFacade.java
-/home/christian/NetBeansProjects/09/guia09/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/web/controladores/TipoEstadoReservaBean.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ParteFacade.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ModeloFacade.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/SubTipoParteFacade.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/boundary/jsf/backing/FrmModelo.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/MarcaFacade.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/TipoVehiculoFacade.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/TipoParteFacade.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/boundary/jsf/backing/FrmModeloParte.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/boundary/jsf/AbstractFrmDataModel.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/AbstractFacade.java
+/home/christian/NetBeansProjects/09/Parcial_III/src/main/java/sv/edu/uesocc/ingenieria/prn335_2018/flota/flotawebapp/control/ModeloParteFacade.java
