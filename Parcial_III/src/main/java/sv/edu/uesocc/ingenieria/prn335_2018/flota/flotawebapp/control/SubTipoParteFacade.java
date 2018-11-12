@@ -12,7 +12,7 @@ import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.SubTipoParte;
 
 /**
  *
- * @author christian
+ * @author oapaises
  */
 @Stateless
 public class SubTipoParteFacade extends AbstractFacade<SubTipoParte> {

@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h3><h:outputLabel value="AS16018" /><br/><br/></h3>
+
+    <h2><h:outputText value="LISTA DE ENTIDAD TIPO ESTADO RESERVA" /><br/><br/></h2>
+    <h:body>
+        <h:form id="form">
+
+            <p:dataTable id="tabla" value="#{Bean.tipoEstadoReserva}" var="p" selectionMode="single" rowKey="#{p.idTipoEstadoReserva}">
+                <p:ajax event="rowSelect" listener="#{Bean.seleccionarRegistro}"/>
+                <p:column headerText="IdTipoEstadoReserva">
+                    <h:outputText value="#{p.idTipoEstadoReserva}"/>
+                </p:column>
+                <p:column headerText="Nombre">
+                    <h:outputText value="#{p.nombre}"/>
+                </p:column>
+                <p:column headerText="Activo">
+                    <h:outputText value="#{p.activo}"/>
+                </p:column>
+                <p:column headerText="IndicaAprobacion">
+                    <h:outputText value="#{p.indicaAprobacion}"/>
+                </p:column>
+                <p:column headerText="Observaciones">
+                    <h:outputText value="#{p.observaciones}"/>
+                </p:column>
+
+            </p:dataTable>
+
+            <h:panelGrid id="panel" columns="2">
+
+                <h:outputText value="Nombre"/>
+                <p:inputText value="#{Bean.nombre}" required="true"/>
+                <h:outputText value="Observaciones"/>
+                <p:inputText value="#{Bean.observaciones}" required="true"/>
+                <h:outputText value="Activo"/>
+                <h:selectBooleanCheckbox value="#{Bean.activo}" required="true"/>
+                <h:outputText value="IndicaAprobacion"/>
+                <h:selectBooleanCheckbox value="#{Bean.indicaAprobacion}" required="true"/>
+                <h:outputText value=""/>
+                <p:commandButton actionListener="#{Bean.crear()}" update="@form" value="crear"
+                                 icon="ui-icon-disk" 
+                                 />
+                
+                <h:outputText value=""/>
+                <p:commandButton value="Nuevo" process="@this" actionListener="#{Bean.resetForm}" update="@form"/>
+                <h:outputText value=""/>
+                <p:commandButton value="Editar" process="@this" actionListener="#{Bean.editar()}" update="form:panel"/>
+                <h:outputText value=""/>
+                <p:commandButton value="Eliminar" process="@this" actionListener="#{Bean.eliminar()}" update="@form"/>
+                <h:outputText value=""/>
+                <p:commandButton value="Cancelar" process="@this" actionListener="#{Bean.resetForm}" update="@form"/>
+                <h:outputText value=""/>
+
+            </h:panelGrid>
+            
+
+        </h:form>
+    </h:body>
+</html>
+

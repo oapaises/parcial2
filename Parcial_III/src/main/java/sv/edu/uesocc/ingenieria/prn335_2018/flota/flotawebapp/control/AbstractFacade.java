@@ -5,8 +5,12 @@
  */
 package sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 /**
  *
@@ -32,7 +36,8 @@ public abstract class AbstractFacade<T> {
 
     /**
      * Aqui se hereda el entity Manager descrito en el EntityFacade
-     * @return 
+     *
+     * @return
      */
     protected abstract EntityManager getEntityManager();
 
@@ -79,8 +84,8 @@ public abstract class AbstractFacade<T> {
     }
 
     /**
-     * Metodo abstracto para buscar por id proporcionado como parametro un entity de
-     * tipo T entity
+     * Metodo abstracto para buscar por id proporcionado como parametro un
+     * entity de tipo T entity
      *
      * @param id
      * @return Devuelve un registro con ese id proporcionado
@@ -101,8 +106,8 @@ public abstract class AbstractFacade<T> {
     }
 
     /**
-     * Metodo abstracto que recibe dos parametros y busca los registro entre
-     * el rango deseado
+     * Metodo abstracto que recibe dos parametros y busca los registro entre el
+     * rango deseado
      *
      * @param init primer parametro para buscar registro
      * @param end ultimo parametro para buscar registro
@@ -131,4 +136,28 @@ public abstract class AbstractFacade<T> {
         return ((Long) q.getSingleResult()).intValue();
     }
 
+    public List<T> findById(int IdEntity) {//Este método deberá devolver una lista de todos los campos de la entidad asignada, donde se encuentre el id mandado como parámetro, y la búsqueda será en base al id de la tabla
+        EntityManager em = null;
+        em = getEntityManager();
+        List<T> ListaBusqueda = new ArrayList<>(); //Creamos un arraylist con base en List<T>
+        if (em == null) {//Siel entityManager es nulo
+            throw new java.lang.IllegalStateException("El entity manager es nulo");
+        } else {//Si la entityManager no es nulo
+            if (IdEntity < 0) { //Si el parametro es negativo
+                throw new java.lang.IllegalArgumentException(" El parametro es negativo o invalido");
+
+            } else {//Si el parametro no es negativo
+                try {
+                    Query query = em.createQuery("SELECT mp FROM ModeloParte mp WHERE mp.idModelo.idModelo=" + IdEntity);
+                    ListaBusqueda = query.getResultList(); //Pasamos la consulta al arrayList
+
+                } catch (java.lang.IllegalStateException e) {
+                    Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+                    em.getTransaction().rollback(); //corta toda la transaccion si ocurre un error y no guarda nada, además si la PK se deja vacia no guarda la transaccion
+//                    em.close();//Cerramos la transaccion
+                }
+            }
+        }
+        return ListaBusqueda; //retornamos la lista
+    }
 }

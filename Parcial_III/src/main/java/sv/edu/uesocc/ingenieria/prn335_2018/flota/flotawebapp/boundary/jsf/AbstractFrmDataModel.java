@@ -18,7 +18,8 @@ import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.AbstractFa
 
 /**
  *
- * @author christian
+ * @author oapaises
+ * @param <T>
  */
 public abstract class AbstractFrmDataModel<T> {
 
@@ -31,6 +32,7 @@ public abstract class AbstractFrmDataModel<T> {
     protected abstract AbstractFacade<T> getFacade();
     List<T> List = new ArrayList<>();
     protected LazyDataModel<T> modelo;
+
     public abstract void crearNuevo();
 
     public void llenarLista(List<T> Lista) {
@@ -40,16 +42,15 @@ public abstract class AbstractFrmDataModel<T> {
             Lista = Collections.EMPTY_LIST;
         }
     }
-    
+
     public void inicializar() {
-//        this.modelo();
+        Fodelo();
         this.llenarLista(List);
-        this.Fodelo();
-        this.resetRegistro();
     }
 
-    public void resetRegistro(){
-        this.setRegistro(null);
+    public void resetRegistro() {
+        setRegistro(null);
+        registro = null;
     }
 
     public void btnEliminarHandler(ActionEvent ae) {
@@ -63,7 +64,7 @@ public abstract class AbstractFrmDataModel<T> {
     }
 
     public void btnCancelarHandler(ActionEvent ae) {
-        resetRegistro();
+        this.resetRegistro();
     }
 
     public LazyDataModel<T> Fodelo() {
@@ -87,6 +88,8 @@ public abstract class AbstractFrmDataModel<T> {
                             this.setRowCount(getFacade().count());
                             salida = getFacade().findRange(first, pageSize);
                         }
+                       
+                      
                     } catch (Exception e) {
                         Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
                     }
@@ -98,7 +101,6 @@ public abstract class AbstractFrmDataModel<T> {
         }
         return null;
     }
-
 
 //    public List<T> listar(int first, int pageSize, String sortField, boolean asc) {
 //        try {
@@ -120,9 +122,6 @@ public abstract class AbstractFrmDataModel<T> {
 //        return Lista;
 //
 //    }
-//
-    
-
     public T getRegistro() {
         return registro;
     }
@@ -139,6 +138,4 @@ public abstract class AbstractFrmDataModel<T> {
         this.modelo = modelo;
     }
 
-   
-    
 }

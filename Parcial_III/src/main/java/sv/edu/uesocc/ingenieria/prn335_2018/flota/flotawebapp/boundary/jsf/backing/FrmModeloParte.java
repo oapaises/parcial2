@@ -6,53 +6,71 @@
 package sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.boundary.jsf.backing;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
-import javax.faces.view.ViewScoped;
+import javax.ejb.EJB;
 import javax.inject.Inject;
-import javax.inject.Named;
 import org.primefaces.model.LazyDataModel;
 import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.Modelo;
 import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.ModeloParte;
 import sv.edu.uesocc.ingenieria.prn335_2018.flota.datos.definicion.Parte;
 import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.boundary.jsf.AbstractFrmDataModel;
 import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.AbstractFacade;
-import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.MarcaFacade;
 import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.ModeloFacade;
 import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.ModeloParteFacade;
 import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.ParteFacade;
-import sv.edu.uesocc.ingenieria.prn335_2018.flota.flotawebapp.control.TipoVehiculoFacade;
 
 /**
  *
  * @author christian
  */
-public class FrmModeloParte extends AbstractFrmDataModel<ModeloParte> implements Serializable{
+final class FrmModeloParte extends AbstractFrmDataModel<ModeloParte> implements Serializable {
 
-    public FrmModeloParte(ModeloParteFacade modeloParteFacade, ModeloFacade modeloFacade, ParteFacade parteFacade, Modelo registro){
+    @EJB
+    ModeloParteFacade modeloParteFacade;
+    @EJB
+    ModeloFacade modeloFacade;
+    @EJB
+    ParteFacade parteFacade;
+    @EJB
+    Modelo modeloEntity;
+    
+    protected int tabSeleccionado=0;
+    List<Parte> listaParte;
+    private ModeloParte modeloParte;
+
+    FrmModeloParte(ModeloParteFacade modeloParteFacade, ModeloFacade modeloFacade, ParteFacade parteFacade, Modelo registro) {
+        this.modeloParteFacade = modeloParteFacade;
+        this.modeloFacade = modeloFacade;
+        this.parteFacade = parteFacade;
+        this.modeloEntity = registro;
+        inicializar();
     }
 
-    @Inject
-    ModeloFacade modeloFacade;
-    @Inject
-    MarcaFacade marcaFacade;
-    @Inject
-    TipoVehiculoFacade tipoVehiculoFacade;
-    @Inject
-    ParteFacade parteFacade;
-    @Inject
-    ModeloParteFacade modeloParteFacade;
-    List<Parte> listaParte;
-    //public ModeloParte modePar = new ModeloParte();
+    @Deprecated
+    public List<ModeloParte> obtenerTodos() {
+        List<ModeloParte> salida = new ArrayList();
+        try {
+            if (modeloParteFacade != null) {
+                salida = modeloParteFacade.findAll();
+            }
+        } catch (Exception e) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, e.getMessage(), e);
+        }
+        return salida;
+    }
 
     @PostConstruct
     @Override
     public void inicializar() {
+
         super.inicializar();
+        crearNuevo();
         try {
             this.listaParte = parteFacade.findAll();
         } catch (Exception ex) {
@@ -61,18 +79,11 @@ public class FrmModeloParte extends AbstractFrmDataModel<ModeloParte> implements
     }
 
     @Override
-    public LazyDataModel<ModeloParte> getModelo() {
-        return super.getModelo();
-    }
-
-    @Override
     public Object clavePorDatos(ModeloParte object) {
         if (object != null) {
             return object.getIdModeloParte();
-
         }
         return null;
-
     }
 
     @Override
@@ -85,8 +96,23 @@ public class FrmModeloParte extends AbstractFrmDataModel<ModeloParte> implements
             }
         }
         return null;
-
     }
+
+    @Override
+    public AbstractFacade<ModeloParte> getFacade() {
+        return modeloParteFacade;
+    }
+
+    @Override
+    public void crearNuevo() {
+        this.registro = new ModeloParte();
+    }
+
+    @Override
+    public LazyDataModel<ModeloParte> getModelo() {
+        return super.getModelo();
+    }
+
     /**
      * Propiedad sintetica para cambiar de Parte
      *
@@ -113,17 +139,9 @@ public class FrmModeloParte extends AbstractFrmDataModel<ModeloParte> implements
             }
         }
     }
-
-    @Override
-    public AbstractFacade<ModeloParte> getFacade() {
-        return modeloParteFacade;
-    }
-
-    @Override
-    public void crearNuevo() {
-        this.registro = new ModeloParte();
-
-    }
+    
+    
+   
 
     public List<Parte> getListaParte() {
         return listaParte;
@@ -132,6 +150,46 @@ public class FrmModeloParte extends AbstractFrmDataModel<ModeloParte> implements
     public void setListaParte(List<Parte> listaParte) {
         this.listaParte = listaParte;
     }
-    
+
+    public ModeloParteFacade getModeloParteFacade() {
+        return modeloParteFacade;
+    }
+
+    public void setModeloParteFacade(ModeloParteFacade modeloParteFacade) {
+        this.modeloParteFacade = modeloParteFacade;
+    }
+
+    public ModeloFacade getModeloFacade() {
+        return modeloFacade;
+    }
+
+    public void setModeloFacade(ModeloFacade modeloFacade) {
+        this.modeloFacade = modeloFacade;
+    }
+
+    public ParteFacade getParteFacade() {
+        return parteFacade;
+    }
+
+    public void setParteFacade(ParteFacade parteFacade) {
+        this.parteFacade = parteFacade;
+    }
+
+    public Modelo getModeloEntity() {
+        return modeloEntity;
+    }
+
+    public void setModeloEntity(Modelo modeloEntity) {
+        this.modeloEntity = modeloEntity;
+    }
+
+    public ModeloParte getModeloParte() {
+        return modeloParte;
+    }
+
+    public void setModeloParte(ModeloParte modeloParte) {
+        this.modeloParte = modeloParte;
+    }
+
     
 }
